@@ -6,6 +6,7 @@ import 'package:profile/widgets/frontend_Constants/get_screen_properties.dart';
 Container mainMobileContainer(BuildContext context) {
   return Container(
     constraints: BoxConstraints(minHeight: 560.0),
+    height: getScreenHeight(context)*0.83,
     margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,

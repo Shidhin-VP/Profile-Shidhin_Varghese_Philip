@@ -8,14 +8,15 @@ List sections=[
   "Ask AI",
   "Skills ",
   "Work Experiences ",
-  "Projects ",
+  "Certification & Publications",
   "Contact Me "
 ];
 
 List sectionIcons=[
+  Icons.bolt,
   Icons.code,
   Icons.work,
-  Icons.explore,
+  Icons.score,
   Icons.contact_page
 ];
 

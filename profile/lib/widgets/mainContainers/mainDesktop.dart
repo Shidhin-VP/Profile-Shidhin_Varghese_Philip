@@ -7,9 +7,10 @@ Container mainDesktopContainer(BuildContext context) {
   return Container(
     margin: EdgeInsets.symmetric(horizontal: 20.0),
     constraints: const BoxConstraints(minHeight: 350.0),
-    height: getScreenHeight(context) / 1.2,
+    height: getScreenHeight(context) *0.9,
     child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Align(
           alignment: Alignment.topCenter,
@@ -49,21 +50,21 @@ Container mainDesktopContainer(BuildContext context) {
                           " AI Engineer",
                           textStyle: TextStyle(
                             fontFamily: 'NewRocker',
-                            fontSize: 40,
+                            fontSize: 30,
                           ),
                         ),
                         ScaleAnimatedText(
                           "Full-Stack Software Enginner",
                           textStyle: TextStyle(
                             fontFamily: 'NewRocker',
-                            fontSize: 25,
+                            fontSize: 30,
                           ),
                         ),
                         ScaleAnimatedText(
                           "IoT Engineer",
                           textStyle: TextStyle(
                             fontFamily: 'NewRocker',
-                            fontSize: 40,
+                            fontSize: 30,
                           ),
                         ),
                       ],
