@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:profile/constants/profile_section.dart';
+import 'package:profile/pages/aksAI_page.dart';
 
-ListTile drawerContentWidget(int index) {
+ListTile drawerContentWidget(int index,Function(int) navIndex,BuildContext context) {
   return ListTile(
-    onTap: () {},
+    onTap: () {
+      index>0?
+      navIndex(index):Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AskAI()));
+    },
     leading: Icon(sectionIcons[index]),
     title: Text(sections[index]),
   );
 }
 
-Column drawerFullContentWidget(BuildContext context) {
+Column drawerFullContentWidget(BuildContext context, Function(int) navIndex) {
   return Column(
     children: [
       Padding(
@@ -30,7 +34,7 @@ Column drawerFullContentWidget(BuildContext context) {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(2.0),
-              child: drawerContentWidget(index),
+              child: drawerContentWidget(index,navIndex,context),
             );
           },
         ),

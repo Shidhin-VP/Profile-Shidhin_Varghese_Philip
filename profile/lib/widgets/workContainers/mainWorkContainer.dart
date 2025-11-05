@@ -9,12 +9,14 @@ Container mainWorkContainer(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Section title
-        Text(
-          "Work Experience",
-          style: TextStyle(
-            fontSize: 26,
-            fontWeight: FontWeight.bold,
-            color: Colors.teal.shade700,
+        Center(
+          child: Text(
+            "Work Experience",
+            style: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+              color: Colors.teal.shade700,
+            ),
           ),
         ),
         const SizedBox(height: 20),

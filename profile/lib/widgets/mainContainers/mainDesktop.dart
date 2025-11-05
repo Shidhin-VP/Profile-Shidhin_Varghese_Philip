@@ -7,7 +7,7 @@ Container mainDesktopContainer(BuildContext context) {
   return Container(
     margin: EdgeInsets.symmetric(horizontal: 20.0),
     constraints: const BoxConstraints(minHeight: 350.0),
-    height: getScreenHeight(context) *0.9,
+    height: getScreenHeight(context) *0.84,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
