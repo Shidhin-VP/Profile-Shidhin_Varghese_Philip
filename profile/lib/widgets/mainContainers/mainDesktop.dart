@@ -7,7 +7,7 @@ Container mainDesktopContainer(BuildContext context) {
   return Container(
     margin: EdgeInsets.symmetric(horizontal: 20.0),
     constraints: const BoxConstraints(minHeight: 350.0),
-    height: getScreenHeight(context) *0.84,
+    height: getScreenHeight(context) * 0.84,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -73,15 +73,20 @@ Container mainDesktopContainer(BuildContext context) {
                 ],
               ),
               SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(
-                    context,
-                  ).push(MaterialPageRoute(builder: (context) => AskAI()));
-                },
-                child: Text(
-                  "Ask My AI Assistant about Me",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+              Flexible(
+                child: SizedBox(
+                  width: 280,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(
+                        context,
+                      ).push(MaterialPageRoute(builder: (context) => AskAI()));
+                    },
+                    child: Text(
+                      "Ask My AI Assistant about Me",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
               ),
             ],

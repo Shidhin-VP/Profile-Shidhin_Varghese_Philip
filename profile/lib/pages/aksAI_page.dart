@@ -47,7 +47,7 @@ class _AskAIState extends State<AskAI> {
                 )
               : SizedBox(),
           Positioned(
-            bottom: 50,
+            bottom: 30,
             left: 50,
             right: 50,
             child: SizedBox(
@@ -55,7 +55,9 @@ class _AskAIState extends State<AskAI> {
               child: Stack(
                 children: [
                   TextField(
-                    onSubmitted: (value) {},
+                    onSubmitted: (value) {
+                      askController.text="Will Be Connecting Agents Soon. Backend needs to be Connected";
+                    },
                     style: TextStyle(color: Colors.amberAccent),
                     controller: askController,
                     decoration: getBorderDetails('Ask About Shidhin'),
@@ -64,7 +66,9 @@ class _AskAIState extends State<AskAI> {
                     bottom: 9,
                     right: 8,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        askController.text="Will Be Connecting Agent Soon Backend needs to be Connected:)";
+                      },
                       child: Text("Ask AI"),
                     ),
                   ),

@@ -13,9 +13,10 @@ Container mainWorkContainer(BuildContext context) {
           child: Text(
             "Work Experience",
             style: TextStyle(
+              fontFamily: 'NewRocker',
               fontSize: 26,
-              fontWeight: FontWeight.bold,
-              color: Colors.teal.shade700,
+              // fontWeight: FontWeight.bold,
+              color: Colors.teal.shade500,
             ),
           ),
         ),

@@ -21,7 +21,7 @@ Container skillDesktopContainer(BuildContext context) {
                   text: "Skills",
                   style: TextStyle(
                     fontFamily: 'NewRocker',
-                    color: Colors.amberAccent,
+                    color: Colors.teal.shade400,
                   ),
                 ),
                 TextSpan(text: " do I Acquire"),
@@ -58,15 +58,12 @@ Container skillDesktopContainer(BuildContext context) {
                           style: ListTileStyle.drawer,
                           shape: RoundedRectangleBorder(
                             side: BorderSide(color: Colors.yellow),
-                            borderRadius: BorderRadiusGeometry.circular(30),
+                            borderRadius: BorderRadius.circular(30),
                           ),
                           leading: Image.asset(
                             professionalizedSkills[index]['img'],
                           ),
-                          title: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            child: Text(professionalizedSkills[index]['title']),
-                          ),
+                          title: Text(professionalizedSkills[index]['title'],maxLines: 1,overflow: TextOverflow.ellipsis,),
                         );
                       },
                     ),

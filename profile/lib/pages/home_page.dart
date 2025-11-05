@@ -68,10 +68,9 @@ class _HomePageState extends State<HomePage> {
                   }),
                 ),
           appBar: AppBar(
-            title: GestureDetector(
-              key: navbarKeys.last,
+            title: InkWell(
               onTap: () {
-                navbarKeys.last;
+                scrollToSection(0);
               },
               child: Text(
                 "SVP",
@@ -130,8 +129,9 @@ class _HomePageState extends State<HomePage> {
                       const Text(
                         "Get in Touch",
                         style: TextStyle(
+                          fontFamily: 'NewRocker',
                           fontSize: 28,
-                          fontWeight: FontWeight.bold,
+                          // fontWeight: FontWeight.bold,
                           color: Colors.teal,
                         ),
                       ),
