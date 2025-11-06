@@ -1,0 +1,6 @@
+    cerebras
+    fastapi
+    langchain
+    langchain-cerebras
+    python-dotenv
+    uvicorn
