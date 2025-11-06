@@ -9,6 +9,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_cerebras import ChatCerebras
 from dotenv import load_dotenv
 import os 
+import json
 
 load_dotenv()
 
@@ -49,6 +50,8 @@ work_experience=[
     "details":""
   },
 ]
+
+work_experience=json.dumps(work_experience,indent=2)
 certifications=[
       {
     'title': "SnowPro Core", 
@@ -57,6 +60,7 @@ certifications=[
     'gitHub':'',
   }
 ]
+certifications=json.dumps(certifications,indent=2)
 publications=[
       {
     'title':'SmartVis',
@@ -65,6 +69,7 @@ publications=[
     'gitHub':'https://github.com/Shidhin-VP/SmartVis',
   }
 ]
+publications=json.dumps(publications,indent=2)
 educations=[
     {
     'Level': "Masters", 
@@ -85,6 +90,7 @@ educations=[
     'University': "Aarupadai Veedu Institute Of Technology"
   }, 
 ]
+educations=json.dumps(educations,indent=2)
 things_I_Love=[]
 professionalizedSkills=["AI Development", "AI Engineering", "Data Science", "iOS Development", "Android Development", " Desktop Development", "Cloud Platform", "Full Stack Development"]
 individualSkills=["Python", "Flutter", "LLM", "Langgraph", "Langchain", "Hugging Face", "Terraform", "AWS", "GCP", "Snowflake", "And More"]
@@ -107,9 +113,9 @@ prompt=ChatPromptTemplate.from_messages(
 
 chain=prompt|llm
 
-print(chain.invoke({"text":"Can shidhin build Applications"}).content)
-print("-"*50)
-print(chain.invoke({"text":"What types?"}).content)
+# print(chain.invoke({"text":"Can shidhin build Applications"}).content)
+# print("-"*50)
+# print(chain.invoke({"text":"What types?"}).content)
 
 app=FastAPI(title="Shidhin's Personal Assistant")
 

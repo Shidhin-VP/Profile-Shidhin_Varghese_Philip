@@ -19,13 +19,14 @@ class _AskAIState extends State<AskAI> {
   TextEditingController askController = TextEditingController();
   TextEditingController answerController = TextEditingController();
   Future<String> askmyAssistant(String question) async {
-    print("API URL: ${dotenv.env['API_URL']}");
+    // print("API URL: ${dotenv.env['API_URL']}");
     final url = Uri.parse(dotenv.env['API_URL']!);
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'question': question}),
     );
+    // print("Response: ${response.body}");
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       return data['answer'] ?? "No answer found";
@@ -77,8 +78,12 @@ class _AskAIState extends State<AskAI> {
                 children: [
                   TextField(
                     onSubmitted: (value) {
-                      activateAnsweringCard = true;
-                      askmyAssistant(askController.text);
+                      setState(() async {
+                        activateAnsweringCard = true;
+                        answerController.text = await askmyAssistant(
+                          askController.text,
+                        );
+                      });
                     },
                     style: TextStyle(color: Colors.amberAccent),
                     controller: askController,
@@ -89,8 +94,12 @@ class _AskAIState extends State<AskAI> {
                     right: 8,
                     child: ElevatedButton(
                       onPressed: () {
-                        activateAnsweringCard = true;
-                        askmyAssistant(askController.text);
+                        setState(() async {
+                          activateAnsweringCard = true;
+                          answerController.text = await askmyAssistant(
+                            askController.text,
+                          );
+                        });
                       },
                       child: Text("Ask AI"),
                     ),
