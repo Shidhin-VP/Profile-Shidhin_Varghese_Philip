@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:profile/widgets/frontend_Constants/textField_Constraint.dart';
 import 'package:rive/rive.dart';
+import 'package:http/http.dart' as http;
 
 class AskAI extends StatefulWidget {
   const AskAI({super.key});
@@ -10,9 +14,26 @@ class AskAI extends StatefulWidget {
 }
 
 class _AskAIState extends State<AskAI> {
-  bool activateAnsweringCard = true;
+  bool activateAnsweringCard = false;
   StateMachineController? catController;
   TextEditingController askController = TextEditingController();
+  TextEditingController answerController = TextEditingController();
+  Future<String> askmyAssistant(String question) async {
+    print("API URL: ${dotenv.env['API_URL']}");
+    final url = Uri.parse(dotenv.env['API_URL']!);
+    final response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'question': question}),
+    );
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return data['answer'] ?? "No answer found";
+    } else {
+      throw Exception('Failed to get answer: ${response.statusCode}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +61,7 @@ class _AskAIState extends State<AskAI> {
                     width: MediaQuery.of(context).size.width * 0.85,
                     color: Colors.transparent,
                     child: Text(
-                      askController.text,
+                      answerController.text,
                       style: TextStyle(color: Colors.amberAccent),
                     ),
                   ),
@@ -56,7 +77,8 @@ class _AskAIState extends State<AskAI> {
                 children: [
                   TextField(
                     onSubmitted: (value) {
-                      askController.text="Will Be Connecting Agents Soon. Backend needs to be Connected";
+                      activateAnsweringCard = true;
+                      askmyAssistant(askController.text);
                     },
                     style: TextStyle(color: Colors.amberAccent),
                     controller: askController,
@@ -67,7 +89,8 @@ class _AskAIState extends State<AskAI> {
                     right: 8,
                     child: ElevatedButton(
                       onPressed: () {
-                        askController.text="Will Be Connecting Agent Soon Backend needs to be Connected:)";
+                        activateAnsweringCard = true;
+                        askmyAssistant(askController.text);
                       },
                       child: Text("Ask AI"),
                     ),

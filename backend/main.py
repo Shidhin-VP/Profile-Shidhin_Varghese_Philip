@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 # from pydantic import BaseModel 
 from langchain.agents import create_react_agent
@@ -111,6 +112,14 @@ print("-"*50)
 print(chain.invoke({"text":"What types?"}).content)
 
 app=FastAPI(title="Shidhin's Personal Assistant")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def root():
