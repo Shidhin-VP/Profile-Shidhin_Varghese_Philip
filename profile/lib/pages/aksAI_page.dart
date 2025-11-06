@@ -54,16 +54,18 @@ class _AskAIState extends State<AskAI> {
           RiveAnimation.asset('assets/rive/starry.riv', fit: BoxFit.cover),
           activateAnsweringCard
               ? Positioned(
-                  top: 60,
+                  top: 80,
                   left: 40,
                   right: 40,
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.5,
                     width: MediaQuery.of(context).size.width * 0.85,
                     color: Colors.transparent,
-                    child: Text(
-                      answerController.text,
-                      style: TextStyle(color: Colors.amberAccent),
+                    child: SingleChildScrollView(
+                      child: Text(
+                        answerController.text,
+                        style: TextStyle(color: Colors.amberAccent),
+                      ),
                     ),
                   ),
                 )
@@ -77,12 +79,12 @@ class _AskAIState extends State<AskAI> {
               child: Stack(
                 children: [
                   TextField(
-                    onSubmitted: (value) {
-                      setState(() async {
+                    onSubmitted: (value) async {
+                      String answer = await askmyAssistant(askController.text);
+                      setState(() {
+                        askController.clear();
                         activateAnsweringCard = true;
-                        answerController.text = await askmyAssistant(
-                          askController.text,
-                        );
+                        answerController.text = answer;
                       });
                     },
                     style: TextStyle(color: Colors.amberAccent),
@@ -93,12 +95,14 @@ class _AskAIState extends State<AskAI> {
                     bottom: 9,
                     right: 8,
                     child: ElevatedButton(
-                      onPressed: () {
-                        setState(() async {
+                      onPressed: () async {
+                        String answer = await askmyAssistant(
+                          askController.text,
+                        );
+                        setState(() {
+                          askController.clear();
                           activateAnsweringCard = true;
-                          answerController.text = await askmyAssistant(
-                            askController.text,
-                          );
+                          answerController.text = answer;
                         });
                       },
                       child: Text("Ask AI"),
